@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+.ropeproject/
+
+# Test artifacts (compiled corpus)
+tests/_build/
+
+# Local dev material
+applescript_docs/
+
+# OS
+.DS_Store
+
+# Editors
+.idea/
+*.sublime-project
+*.sublime-workspace
