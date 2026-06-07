@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "applescript-decompiler"
-version = "1.0.0"
+dynamic = ["version"]
 description = "Decompiler for compiled AppleScript (.scpt) files"
 readme = "README.md"
 license = "MIT"
@@ -40,6 +40,13 @@ asdec = "applescript_decompiler.cli:main"
 
 [dependency-groups]
 dev = ["pytest>=8", "rope>=1.13"]
+
+# Version is derived from the latest git tag (e.g. tag `v1.0.0` -> `1.0.0`).
+# Builds outside a git checkout (sdist rebuilds, the non-git working tree)
+# fall back to the version below so they don't hard-fail.
+[tool.hatch.version]
+source = "vcs"
+fallback-version = "0.0.0"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/applescript_decompiler"]
