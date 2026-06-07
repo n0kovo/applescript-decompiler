@@ -1,11 +1,19 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
 permissions:
+  contents: read
   id-token: write
+
 jobs:
   release:
     environment: pypi
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: astral-sh/setup-uv@v5
-    - run: uv build
-    - uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - run: uv build
+      - uses: pypa/gh-action-pypi-publish@release/v1
